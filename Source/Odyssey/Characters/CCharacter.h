@@ -9,6 +9,13 @@ class ODYSSEY_API ACCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
+private:
+	UPROPERTY(VisibleAnywhere)
+	class USpringArmComponent* SpringArm;
+
+	UPROPERTY(VisibleAnywhere)
+	class UCameraComponent* Camera;
+
 public:
 	ACCharacter();
 
