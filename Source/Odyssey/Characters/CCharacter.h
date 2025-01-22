@@ -9,12 +9,25 @@ class ODYSSEY_API ACCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
-private:
+private: // Components
 	UPROPERTY(VisibleAnywhere)
 	class USpringArmComponent* SpringArm;
 
 	UPROPERTY(VisibleAnywhere)
 	class UCameraComponent* Camera;
+
+	UPROPERTY(VisibleAnywhere)
+	class UCMovementComponent* Movement;
+
+private: // Enhanced Input
+	UPROPERTY(EditAnywhere, Category = "EnhancedInput")
+	class UInputMappingContext* DefaultContext;
+
+	UPROPERTY(EditAnywhere, Category = "EnhancedInput")
+	class UInputAction* IA_Movement;
+
+	UPROPERTY(EditAnywhere, Category = "EnhancedInput")
+	class UInputAction* IA_Look;
 
 public:
 	ACCharacter();
@@ -27,4 +40,7 @@ public:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+private:
+	void Initialize();
+	void SetEnhancedInput();
 };
