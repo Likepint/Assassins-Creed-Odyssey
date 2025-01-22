@@ -2,6 +2,9 @@
 
 #include "CoreMinimal.h"
 
+#define TrueCheck(X) { if (X) return; }
+#define FalseCheck(X) { if (!X) return; }
+
 class ODYSSEY_API CHelpers
 {
 public:
@@ -18,5 +21,11 @@ public:
 		}
 
 		InActor->SetRootComponent(*OutComponent);
+	}
+
+	template<typename T>
+	static void CreateActorComponent(AActor* InActor, T** OutComponent, FName InName)
+	{
+		*OutComponent = InActor->CreateDefaultSubobject<T>(InName);
 	}
 };
